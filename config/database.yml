@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: railway_development
+  pool: 5
+  username: dell
+  password: password
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: railway_test
+  pool: 5
+  username: dell
+  password: password
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: railway_production
+  pool: 5
+  username: dell
+  password: password
