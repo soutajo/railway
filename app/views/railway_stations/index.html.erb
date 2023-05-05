@@ -1,14 +1,27 @@
-<p style="color: green"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
-<h1>Railway stations</h1>
+<h1>List of all railway stations</h1>
 
-<div id="railway_stations">
-  <% @railway_stations.each do |railway_station| %>
-    <%= render railway_station %>
-    <p>
-      <%= link_to "Show this railway station", railway_station %>
-    </p>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  </tbody>
+    <% @railway_stations.each do |railway_station| %>
+    <tr>
+      <td><%= railway_station.title %></td>
+      <td><%= link_to 'Show', railway_station %></td>
+      <td><%= link_to 'Edit', edit_railway_station_path(railway_station) %></td>
+      <td><%= link_to 'Delete', railway_station, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
 
 <%= link_to "New railway station", new_railway_station_path %>
