@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_05_164602) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_06_202400) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,10 +20,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_164602) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "routes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stations_routes", force: :cascade do |t|
+    t.integer "station_id"
+    t.integer "route_id"
+  end
+
   create_table "trains", force: :cascade do |t|
     t.string "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "current_station_id"
+    t.index ["current_station_id"], name: "index_trains_on_current_station_id"
   end
 
 end
